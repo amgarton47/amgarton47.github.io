@@ -8,13 +8,25 @@ img:hover {
   height: 30px; */
 }
 
-* {
+#content {
   margin: 0;
   padding: 0;
   text-align: center;
 }
 
+#header {
+  text-align: left;
+}
+
 ol,
 ul {
   padding: 0 150px 0 150px;
+}
+
+ul {
+  padding: 0 450px 0 450px;
+}
+
+#header-elements * :hover {
+  background-color: black;
 }

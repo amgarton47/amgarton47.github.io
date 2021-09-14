@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.ico" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
@@ -13,21 +14,19 @@
 </head>
 
 <body>
-    <header class="p-3 bg-dark text-white">
+    <header id="header" class="p-3 bg-dark text-white">
         <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                        <use xlink:href="#bootstrap"></use>
-                    </svg>
-                </a>
-
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="#description" class="nav-link px-2 text-secondary">Description</a></li>
+            <h1>Chess Net</h1>
+            <h2><small class="text-muted">A chess evaluation and search engine using NNs</small></h2>
+            <h4><small class="text-muted">CS152 Fall2021 Project Proposal</small></h4>
+            <div class="d-flex flex-wrap align-items-left justify-content-around justify-content-lg-start">
+                <ul id="header-elements" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="#description" class="nav-link px-2 text-white">Description</a></li>
                     <li><a href="#goals" class="nav-link px-2 text-white">Goals</a></li>
                     <li><a href="#sources" class="nav-link px-2 text-white">Sources</a></li>
                     <a href="https://github.com/amgarton47/amgarton47.github.io">
-                        <img style="margin-top: 8px;" src="github-logo.png" alt="Github" width="25" height="25">
+                        <img style="margin: 8px 0 0 8px;" src="./assets/github-logo.png" alt="Github" width="25"
+                            height="25">
                     </a>
                 </ul>
 
@@ -43,76 +42,90 @@
     </header>
 
 
-    <h1>Chess Net
-        <!-- <small class="text-muted">CS152 Fall2021 Project Proposal</small> -->
-    </h1>
-    <h2> <small class="text-muted">A chess evaluation and search engine using NNs</small></h2>
+    <div id="content">
 
-    <!-- DESCRIPTION -->
-    <div>
-        <h1 id="description"><u>Project Description:</u></h1>
-        <p>I will focus on creating a chess engine - an AI chess player that consists of two key parts: </p>
 
-        <ol>
-            <li><u>Evaluation function:</u> this function, given the state of a game of chess, returns an integer
-                between
-                -100 and 100, corresponding to the strength of either side's board state. We will have 100 represent a
-                checkmate for white (end of the game and a win for white) while -100 represents a checkmate for black
-                (the
-                game is over and black has won). A perfect problem for a neural network! By training on a large dataset
-                of
-                openly available chess positions (and calculating closeness to checkmate), we can train a NN that
-                simulates
-                an evaluation function by (hopefully) accurateley predicting the strength of a given chess position.
-            </li>
+        <!-- DESCRIPTION -->
+        <div>
+            <h1 id="description"><u>Project Description:</u></h1>
+            <p>I will focus on creating a chess engine - an AI chess player that consists of two key parts: </p>
 
-            <img src="evalfunc.png" alt="Github" width="500">
+            <ol>
+                <li><u>Evaluation function:</u> this function, given the state of a game of chess, returns an integer
+                    between
+                    -100 and 100, corresponding to the strength of either side's board state. We will have 100 represent
+                    a
+                    checkmate for white (end of the game and a win for white) while -100 represents a checkmate for
+                    black
+                    (the
+                    game is over and black has won). A perfect problem for a neural network! By training on a large
+                    dataset
+                    of
+                    openly available chess positions (and calculating closeness to checkmate), we can train a NN that
+                    simulates
+                    an evaluation function by (hopefully) accurateley predicting the strength of a given chess position.
+                </li>
 
-            <li><u>Search algorithm:</u> once we have a working evaluation function, we can, starting with the opening
-                position of a chess game, create a tree of *all* possible moves to be made, each labeled with an
-                evaluation.
-                Given this tree, we use a search algorithm (mini-max or monte-carlo) to search for the optimal line of
-                play
-                for the computer in order to maximize its evaluation. Note: The number of possible chess positions after
-                4
-                moves (this means each side has played four moves) is 656,100,000,000. Thus, to minimize the time
-                complexity
-                of creating such a tree, we will need to use severl "pruning" methods by eliminating "bad" nodes
-                wherever we
-                can. </li>
+                <img src="./assets/diagram.png" alt="" width="800">
 
-            <img src="chess-tree.jpg" alt="Github">
-        </ol>
+                <li><u>Search algorithm:</u> once we have a working evaluation function, we can, starting with the
+                    opening
+                    position of a chess game, create a tree of *all* possible moves to be made, each labeled with an
+                    evaluation.
+                    Given this tree, we use a search algorithm (mini-max or monte-carlo) to search for the optimal line
+                    of
+                    play
+                    for the computer in order to maximize its evaluation. Note: The number of possible chess positions
+                    after
+                    4
+                    moves (this means each side has played four moves) is 656,100,000,000. Thus, to minimize the time
+                    complexity
+                    of creating such a tree, we will need to use severl "pruning" methods by eliminating "bad" nodes
+                    wherever we
+                    can. </li>
+
+                <img src="./assets/chess-tree.jpg" alt="">
+            </ol>
+        </div>
+
+        <!-- GOALS -->
+        <div>
+            <h1 id="goals"><u>Project Goals:</u></h1>
+            <ul>
+                <li>Train a NN to simulate an evaluation function for a given chess board-state</li>
+                <li>Implement a (semi-)efficient search algorithm to suggest optimal lines of play.</li>
+                <li></li>
+
+                <u>stretch:</u>
+                <li>Push the engine to its limits! How strong of a chess player can we make it?</li>
+                <li>Implement a playable chess interface to allow users to interact with our engine</li>
+            </ul>
+        </div>
+
+        <!-- SOURCES -->
+        <div>
+            <h1 id="sources"><u>Sources:</u></h1>
+            <ul style="list-style-type: none;">
+                <li>
+                    <a
+                        href="https://towardsdatascience.com/dissecting-stockfish-part-2-in-depth-look-at-a-chess-engine-2643cdc35c9a">Dissecting
+                        Stockfish: In-Depth Look at a chess engine</a>
+                </li>
+
+                <li><a href="https://arxiv.org/pdf/1806.00683.pdf">Expert Iteration based Chess agent in the
+                        Reinforcement Learning Setting</a>
+                </li>
+                <li><a href="https://www.jyi.org/2021-june/2021/6/2/the-role-of-ai-in-modern-chess">The role of AI
+                        in modern chess</a></li>
+            </ul>
+        </div>
+
+        <footer class="p-3 bg-dark text-white">
+            Maintained by <a href="https://github.com/amgarton47">amgarton47</a>
+            <br>
+            Created with <a href="https://pages.github.com/">Github Pages</a>
+        </footer>
     </div>
-
-    <!-- GOALS -->
-    <div>
-        <h1 id="goals"><u>Project Goals:</u></h1>
-        <ul>
-            <li>Train a NN to simulate an evaluation function for a given chess board-state</li>
-            <li>Implement a (semi-)efficient search algorithm to suggest optimal lines of play.</li>
-            <li></li>
-
-            <u>stretch:</u>
-            <li>Push the engine to its limits! How strong of a chess player can we make it?</li>
-            <li>Implement a playable chess interface to allow users to interact with our engine</li>
-        </ul>
-    </div>
-
-    <!-- SOURCES -->
-    <div>
-        <h1 id="sources"><u>Sources:</u></h1>
-        <ul style="list-style-type: none;">
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </div>
-
-    <footer class="p-3 bg-dark text-white">
-        Created with <a href="https://pages.github.com/">Github Pages</a>
-    </footer>
-
 </body>
 
 </html>
